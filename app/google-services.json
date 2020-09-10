@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1028408564486",
+    "firebase_url": "https://ficosec-a2b26.firebaseio.com",
+    "project_id": "ficosec-a2b26",
+    "storage_bucket": "ficosec-a2b26.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1028408564486:android:c19df57201feeac9b4dc87",
+        "android_client_info": {
+          "package_name": "com.residencias.ficosec"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1028408564486-up532n38fdsv9c5bclulro3rn52r40bb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.residencias.ficosec",
+            "certificate_hash": "5d5e04acdb8ef3e340d025a0f789298b15e689cd"
+          }
+        },
+        {
+          "client_id": "1028408564486-pj85q5lhbmui8anfv5kcsu73n92vthrh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKgusU4W82KZ2CBwGw7NRxJxrjj4utE5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1028408564486-pj85q5lhbmui8anfv5kcsu73n92vthrh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
