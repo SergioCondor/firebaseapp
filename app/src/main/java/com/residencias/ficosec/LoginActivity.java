@@ -7,9 +7,11 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -18,23 +20,32 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.residencias.ficosec.Model.Users;
+import com.residencias.ficosec.Prevalent.Prevalent;
+import com.rey.material.widget.CheckBox;
+
+import io.paperdb.Paper;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText InputPhoneNumber, InputPassword;
     private Button LoginButton;
     private ProgressDialog loadingBar;
-
+    private CheckBox chkBoxRememberMe;
     private String parentDbName = "Users";
+    private TextView AdminLink, NotAdminLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        chkBoxRememberMe = (CheckBox) findViewById(R.id.checkbox);
+        Paper.init(this);
         LoginButton = (Button) findViewById(R.id.login_btn);
         InputPhoneNumber = (EditText) findViewById(R.id.login_phone_number_input);
         InputPassword = (EditText) findViewById(R.id.login_password_input);
         loadingBar = new ProgressDialog(this);
+        AdminLink = (TextView) findViewById(R.id.admin_panel_link);
+        NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
 
         LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +53,26 @@ public class LoginActivity extends AppCompatActivity {
                 LoginUser();
             }
         });
+        AdminLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginButton.setText("Sesión como Admin");
+                AdminLink.setVisibility(View.INVISIBLE);
+                NotAdminLink.setVisibility(View.VISIBLE);
+                parentDbName = "Admins";
+            }
+        });
+
+       NotAdminLink.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               LoginButton.setText("Iniciar sesión");
+               AdminLink.setVisibility(View.VISIBLE);
+               NotAdminLink.setVisibility(View.INVISIBLE);
+               parentDbName = "Users";
+
+           }
+       });
     }
 
     private void LoginUser() {
@@ -66,6 +97,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void AllowAccessToAccount(final String phone, final String password) {
+
+        if (chkBoxRememberMe.isChecked()){
+            Paper.book().write(Prevalent.UserPhonekey, phone);
+            Paper.book().write(Prevalent.UserPasswordkey, password);
+
+        }
+
         final DatabaseReference Rootref;
         Rootref = FirebaseDatabase.getInstance().getReference();
 
@@ -76,10 +114,22 @@ public class LoginActivity extends AppCompatActivity {
                     Users usersData = snapshot.child(parentDbName).child(phone).getValue(Users.class);
                     if (usersData.getPhone().equals(phone)){
                         if (usersData.getPassword().equals(password)){
-                            Toast.makeText(LoginActivity.this, "Sesion iniciada correctamente", Toast.LENGTH_SHORT).show();
+                            /*Toast.makeText(LoginActivity.this, "Sesion iniciada correctamente", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                            startActivity(intent);
+                            startActivity(intent);*/
+                            if (parentDbName.equals("Admins")){
+                                Toast.makeText(LoginActivity.this, "Sesion iniciada correctamente", Toast.LENGTH_SHORT).show();
+                                loadingBar.dismiss();
+                                Intent intent = new Intent(LoginActivity.this, AdminAddNewProductActivity.class);
+                                startActivity(intent);
+                            }else if(parentDbName.equals("Users")){
+                                Toast.makeText(LoginActivity.this, "Sesion iniciada correctamente", Toast.LENGTH_SHORT).show();
+                                loadingBar.dismiss();
+                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                startActivity(intent);
+                            }
+
                         }else{
                             loadingBar.dismiss();
                             Toast.makeText(LoginActivity.this, "Contraseña incorrecta ", Toast.LENGTH_SHORT).show();
