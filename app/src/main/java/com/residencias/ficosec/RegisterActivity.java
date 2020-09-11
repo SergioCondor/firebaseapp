@@ -76,6 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
     private void ValidatePhoneNumber(final String name, final String phone, final String password) {
         final DatabaseReference Rootref;
         Rootref = FirebaseDatabase.getInstance().getReference();
+
         Rootref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
