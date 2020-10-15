@@ -38,14 +38,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        chkBoxRememberMe = (CheckBox) findViewById(R.id.checkbox);
+        chkBoxRememberMe = findViewById(R.id.checkbox);
         Paper.init(this);
-        LoginButton = (Button) findViewById(R.id.login_btn);
-        InputPhoneNumber = (EditText) findViewById(R.id.login_phone_number_input);
-        InputPassword = (EditText) findViewById(R.id.login_password_input);
+        LoginButton = findViewById(R.id.login_btn);
+        InputPhoneNumber = findViewById(R.id.login_phone_number_input);
+        InputPassword = findViewById(R.id.login_password_input);
         loadingBar = new ProgressDialog(this);
-        AdminLink = (TextView) findViewById(R.id.admin_panel_link);
-        NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
+        AdminLink = findViewById(R.id.admin_panel_link);
+        NotAdminLink = findViewById(R.id.not_admin_panel_link);
 
         LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,11 +80,12 @@ public class LoginActivity extends AppCompatActivity {
         String password = InputPassword.getText().toString();
 
           if (TextUtils.isEmpty(phone)){
-            Toast.makeText(this,"porfavor rellene todos los campos", Toast.LENGTH_LONG);
+            Toast.makeText(this,"porfavor rellene todos los campos", Toast.LENGTH_LONG).show();
+
         }
 
         else if (TextUtils.isEmpty(password)){
-            Toast.makeText(this,"porfavor rellene todos los campos", Toast.LENGTH_LONG);
+            Toast.makeText(this,"porfavor rellene todos los campos", Toast.LENGTH_LONG).show();
         }
         else{
               loadingBar.setTitle("Iniciando sesión");
@@ -127,6 +128,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(LoginActivity.this, "Sesion iniciada correctamente", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                Prevalent.currentOnlineUser = usersData;
                                 startActivity(intent);
                             }
 
