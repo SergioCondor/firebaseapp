@@ -1,5 +1,6 @@
 package com.residencias.ficosec;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
@@ -37,6 +38,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;
+
+import static com.residencias.ficosec.R.id.nav_logout;
+import static com.residencias.ficosec.R.id.nav_orders;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -84,7 +88,37 @@ public class HomeActivity extends AppCompatActivity
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case nav_orders:
+                        break;
+                    case R.id.nav_categories:
+
+                        break;
+                    case R.id.nav_settings:
+
+                        break;
+                    case nav_logout:
+                        //Toast.makeText(this, "login out", Toast.LENGTH_SHORT).show();
+                        Paper.book().destroy();
+                        Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        finish();
+                        break;
+                    default:
+                        break;
+                }
+
+                DrawerLayout drawer = findViewById(R.id.drawer_layout);
+                drawer.closeDrawer(GravityCompat.START);
+                return true;
+            }
+
+        });
     }
 
     @Override
@@ -127,19 +161,22 @@ public class HomeActivity extends AppCompatActivity
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-    @SuppressWarnings("StatementWithEmptyBody")
+
 
     public boolean onNavigationItemSelected(@NonNull MenuItem item){
 
-        int id = item.getItemId();
-        /*switch (id){
-            case R.id.nav_orders :
+       // int id = item.getItemId();
+        switch (item.getItemId()){
+            case nav_orders :
+                Toast.makeText(this, "login out", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_categories:
+                Toast.makeText(this, "login out", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_settings:
+                Toast.makeText(this, "login out", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.nav_logout:
+            case nav_logout:
                 Toast.makeText(this, "login out", Toast.LENGTH_SHORT).show();
                 Paper.book().destroy();
                 Intent intent = new Intent(HomeActivity.this, MainActivity.class);
@@ -148,8 +185,8 @@ public class HomeActivity extends AppCompatActivity
                 finish();
                 break;
             default:
-                break;*/
-        if (id == R.id.nav_cart){
+                break;
+        /*if (id == R.id.nav_cart){
 
         }else if(id == R.id.nav_orders){
 
@@ -163,7 +200,7 @@ public class HomeActivity extends AppCompatActivity
             Intent intent = new Intent(HomeActivity.this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
-            finish();
+            finish();*/
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
