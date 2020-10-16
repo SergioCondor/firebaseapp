@@ -99,6 +99,8 @@ public class HomeActivity extends AppCompatActivity
 
                         break;
                     case R.id.nav_settings:
+                        Intent intentar = new Intent(HomeActivity.this, SettingsActivity.class);
+                        startActivity(intentar);
 
                         break;
                     case nav_logout:
