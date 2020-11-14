@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ import com.residencias.ficosec.Model.Products;
 import com.residencias.ficosec.Prevalent.Prevalent;
 import com.residencias.ficosec.ViewHolder.ProductViewHolder;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
@@ -48,6 +50,7 @@ public class HomeActivity extends AppCompatActivity
     private DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
     private AppBarConfiguration mAppBarConfiguration;
+    //private ImageView profileImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +66,7 @@ public class HomeActivity extends AppCompatActivity
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+       // profileImageView = findViewById(R.id.user_profile_image);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,9 +79,9 @@ public class HomeActivity extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
 
         TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
-        //  TextView profileImageView = headerView.findViewById(R.id.user_profile_image);
+        ImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
         userNameTextView.setText(Prevalent.currentOnlineUser.getName());
-
+        Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
