@@ -41,6 +41,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;
 
+import static com.residencias.ficosec.R.id.nav_cart;
 import static com.residencias.ficosec.R.id.nav_logout;
 import static com.residencias.ficosec.R.id.nav_orders;
 import static com.residencias.ficosec.R.id.start;
@@ -72,8 +73,8 @@ public class HomeActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+               Intent intent = new Intent(HomeActivity.this, CartActivity.class);
+               startActivity(intent);
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -99,6 +100,10 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
+                    case nav_cart:
+                        Intent intent = new Intent(HomeActivity.this, CartActivity.class);
+                        startActivity(intent);
+                        break;
                     case nav_orders:
                         break;
                     case R.id.nav_categories:
@@ -112,9 +117,9 @@ public class HomeActivity extends AppCompatActivity
                     case nav_logout:
                         //Toast.makeText(this, "login out", Toast.LENGTH_SHORT).show();
                         Paper.book().destroy();
-                        Intent intent = new Intent(HomeActivity.this, MainActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
+                        Intent intento = new Intent(HomeActivity.this, MainActivity.class);
+                        intento.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intento);
                         finish();
                         break;
                     default:
