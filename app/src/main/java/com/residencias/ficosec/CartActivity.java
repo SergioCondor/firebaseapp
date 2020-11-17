@@ -20,8 +20,11 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.residencias.ficosec.Model.Cart;
 import com.residencias.ficosec.Prevalent.Prevalent;
 import com.residencias.ficosec.ViewHolder.CartViewHolder;
@@ -30,8 +33,7 @@ public class CartActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private Button NextProcessBtn;
-    private TextView txtTotalAmount;
-
+    private TextView txtTotalAmount, txtMsg1;
     public String totalAmount = "";
 
     private int overTotalPrice = 0 ;
@@ -52,6 +54,7 @@ public class CartActivity extends AppCompatActivity {
 
         NextProcessBtn = findViewById(R.id.next_process_btn);
         txtTotalAmount = findViewById(R.id.total_price);
+        txtMsg1 = findViewById(R.id.msg1);
 
 
         NextProcessBtn.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +79,7 @@ public class CartActivity extends AppCompatActivity {
     }
     protected void onStart(){
         super.onStart();
-
+        CheckOrderState();
 
 
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
@@ -147,5 +150,46 @@ public class CartActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(adapter);
         adapter.startListening();
+    }
+
+
+    private void CheckOrderState(){
+        DatabaseReference ordersRef;
+        ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders")
+                .child(Prevalent.currentOnlineUser.getPhone());
+        ordersRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    String shippingState =snapshot.child("state").getValue().toString();
+                    String userName =snapshot.child("name").getValue().toString();
+
+                    if (shippingState.equals("shipped")){
+                        txtTotalAmount.setText("La orden para " + userName+ " ha sido completada");
+                        recyclerView.setVisibility(View.GONE);
+                        txtMsg1.setVisibility(View.VISIBLE);
+                        txtMsg1.setText("Tu orden final ha sido enviada, pronto recibiras tu producto");
+
+                        NextProcessBtn.setVisibility(View.GONE);
+                        Toast.makeText(CartActivity.this, "Puedes comprar mas productos cuando completes tu orden final", Toast.LENGTH_SHORT).show();
+                    }else if (shippingState.equals(" not shipped")){
+                        txtTotalAmount.setText("Aun no se ha enviado la orden");
+                        recyclerView.setVisibility(View.GONE);
+                        txtMsg1.setVisibility(View.VISIBLE);
+                        txtMsg1.setText("Tu orden final ha sido completada, pronto sera verificada");
+
+                        NextProcessBtn.setVisibility(View.GONE);
+                        Toast.makeText(CartActivity.this, "Puedes comprar mas productos cuando completes tu orden final", Toast.LENGTH_SHORT).show();
+
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
