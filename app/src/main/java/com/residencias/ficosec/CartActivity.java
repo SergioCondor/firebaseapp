@@ -32,11 +32,19 @@ public class CartActivity extends AppCompatActivity {
     private Button NextProcessBtn;
     private TextView txtTotalAmount;
 
+    public String totalAmount = "";
+
+    private int overTotalPrice = 0 ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
+        totalAmount = getIntent().getStringExtra("Precio total");
+
+
+
         recyclerView = findViewById(R.id.cart_list);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
@@ -45,9 +53,31 @@ public class CartActivity extends AppCompatActivity {
         NextProcessBtn = findViewById(R.id.next_process_btn);
         txtTotalAmount = findViewById(R.id.total_price);
 
+
+        NextProcessBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // txtTotalAmount.setText("Precio total = " + String.valueOf(overTotalPrice));
+                 Intent intent = new Intent(CartActivity.this, ConfirmFinalOrderActivity.class);
+                intent.putExtra("Precio total", String.valueOf(overTotalPrice));
+
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
+    }
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+        overTotalPrice = 0;
     }
     protected void onStart(){
         super.onStart();
+
+
 
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
         FirebaseRecyclerOptions<Cart> options = new FirebaseRecyclerOptions.Builder<Cart>().setQuery(cartListRef.child("User View")
@@ -60,6 +90,10 @@ public class CartActivity extends AppCompatActivity {
                         cartViewHolder.txtProductQuantity.setText("Cantidad = "+cart.getQuantity());
                         cartViewHolder.txtProductPrice.setText("Precio "+cart.getPrice()+"$");
                         cartViewHolder.txtProductName.setText(cart.getPname());
+
+                        int oneTypeproductTPrice = ((Integer.valueOf(cart.getPrice()))) * Integer.valueOf(cart.getQuantity());
+                        overTotalPrice = overTotalPrice + oneTypeproductTPrice;
+                        txtTotalAmount.setText("Precio total = " + String.valueOf(overTotalPrice));
 
                         cartViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
