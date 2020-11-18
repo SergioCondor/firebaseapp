@@ -112,5 +112,33 @@
             android:src="@drawable/mobiles"/>
     </LinearLayout>
 
+    <Button
+        android:id="@+id/admin_logout_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/check_orders_btn"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Cerrar sesión"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        />
+
+    <Button
+        android:id="@+id/check_orders_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="15dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Ver nuevos pedidos"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        />
+
 
 </RelativeLayout>
