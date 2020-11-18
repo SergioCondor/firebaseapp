@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,13 +47,23 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
 
         FirebaseRecyclerAdapter<AdminOrders, AdminOrdersViewHolder> adapter = new FirebaseRecyclerAdapter<AdminOrders, AdminOrdersViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull AdminOrdersViewHolder adminOrdersViewHolder, int i, @NonNull AdminOrders adminOrders) {
+            protected void onBindViewHolder(@NonNull AdminOrdersViewHolder adminOrdersViewHolder, final int i, @NonNull final AdminOrders adminOrders) {
                 adminOrdersViewHolder.userName.setText("Nombre: " +adminOrders.getName());
                 adminOrdersViewHolder.userPhoneNumber.setText("Numero de telefono: " +adminOrders.getPhone());
                 adminOrdersViewHolder.userTotalPrice.setText("Total: " +adminOrders.getTotalAmount());
                 adminOrdersViewHolder.userDateTime.setText("Pedido el: " +adminOrders.getDate()+"  " + adminOrders.getTime());
                 adminOrdersViewHolder.userShippingAddress.setText("Dirección: " +adminOrders.getAddress()+"  "+adminOrders.getCity());
 
+                adminOrdersViewHolder.ShowOrdersBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        String uID = getRef(i).getKey();
+                        Intent intent = new Intent(AdminNewOrdersActivity.this, AdminUserProductsActivity.class);
+                        intent.putExtra("uid", uID);
+                        startActivity(intent);
+                    }
+                });
             }
 
             @NonNull
