@@ -43,7 +43,6 @@ import io.paperdb.Paper;
 
 import static com.residencias.ficosec.R.id.nav_cart;
 import static com.residencias.ficosec.R.id.nav_logout;
-import static com.residencias.ficosec.R.id.nav_orders;
 import static com.residencias.ficosec.R.id.start;
 
 public class HomeActivity extends AppCompatActivity
@@ -104,7 +103,9 @@ public class HomeActivity extends AppCompatActivity
                         Intent intent = new Intent(HomeActivity.this, CartActivity.class);
                         startActivity(intent);
                         break;
-                    case nav_orders:
+                    case R.id.nav_search:
+                        Intent intentarse = new Intent(HomeActivity.this, SearchProductsActivity.class);
+                        startActivity(intentarse);
                         break;
                     case R.id.nav_categories:
 
@@ -189,22 +190,22 @@ public class HomeActivity extends AppCompatActivity
 
        // int id = item.getItemId();
         switch (item.getItemId()){
-            case nav_orders :
-                Toast.makeText(this, "login out", Toast.LENGTH_SHORT).show();
+            case R.id.nav_search :
+               // Toast.makeText(this, "login out", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_categories:
-                Toast.makeText(this, "login out", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(this, "login out", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_settings:
-                Toast.makeText(this, "login out", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(this, "login out", Toast.LENGTH_SHORT).show();
                 break;
             case nav_logout:
-                Toast.makeText(this, "login out", Toast.LENGTH_SHORT).show();
-                Paper.book().destroy();
-                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                finish();
+               // Toast.makeText(this, "login out", Toast.LENGTH_SHORT).show();
+               // Paper.book().destroy();
+               // Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+              //  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+              //  startActivity(intent);
+              //  finish();
                 break;
             default:
                 break;

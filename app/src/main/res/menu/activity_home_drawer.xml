@@ -10,10 +10,10 @@
             android:iconTint="@android:color/white"
             android:title="Carrito"/>
         <item
-            android:id="@+id/nav_orders"
-            android:icon="@drawable/orders"
+            android:id="@+id/nav_search"
+            android:icon="?android:attr/actionModeWebSearchDrawable"
             android:iconTint="@android:color/white"
-            android:title="Ordenes"/>
+            android:title="Buscar"/>
         <item
             android:id="@+id/nav_categories"
             android:icon="@drawable/category"
