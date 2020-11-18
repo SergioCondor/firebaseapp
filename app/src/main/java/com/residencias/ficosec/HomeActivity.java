@@ -52,12 +52,21 @@ public class HomeActivity extends AppCompatActivity
     private RecyclerView recyclerView;
     private AppBarConfiguration mAppBarConfiguration;
 
+    private String type = "";
+
     //private ImageView profileImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle!=null){
+            type = getIntent().getExtras().get("Admin").toString();
+        }
+
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
         Paper.init(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -82,9 +91,11 @@ public class HomeActivity extends AppCompatActivity
 
         TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
         ImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
-        userNameTextView.setText(Prevalent.currentOnlineUser.getName());
-        Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
-        // Passing each menu ID as a set of Ids because each
+        if (!type.equals("Admin")){
+            userNameTextView.setText(Prevalent.currentOnlineUser.getName());
+            Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+        }
+      // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
@@ -100,8 +111,8 @@ public class HomeActivity extends AppCompatActivity
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case nav_cart:
-                        Intent intent = new Intent(HomeActivity.this, CartActivity.class);
-                        startActivity(intent);
+                        Intent intentos = new Intent(HomeActivity.this, CartActivity.class);
+                        startActivity(intentos);
                         break;
                     case R.id.nav_search:
                         Intent intentarse = new Intent(HomeActivity.this, SearchProductsActivity.class);
@@ -147,12 +158,20 @@ public class HomeActivity extends AppCompatActivity
                 holder.txtProductPrice.setText("Precio = " + model.getPrice()+"$");
                 Picasso.get().load(model.getImage()).into(holder.imageView);
 
+
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
-                        intent.putExtra("pid",model.getPid());
-                        startActivity(intent);
+                        if (type.equals("Admin")){
+                            Intent intent = new Intent(HomeActivity.this, AdminMaintainProductsActivity.class);
+                            intent.putExtra("pid",model.getPid());
+                            startActivity(intent);
+                        }else{
+                            Intent intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
+                            intent.putExtra("pid",model.getPid());
+                            startActivity(intent);
+                        }
+
                     }
                 });
             }
