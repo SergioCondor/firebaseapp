@@ -1,4 +1,4 @@
-package com.residencias.ficosec;
+package com.residencias.ficosec.Buyers;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -19,6 +18,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.residencias.ficosec.Model.Products;
+import com.residencias.ficosec.R;
 import com.residencias.ficosec.ViewHolder.ProductViewHolder;
 import com.squareup.picasso.Picasso;
 

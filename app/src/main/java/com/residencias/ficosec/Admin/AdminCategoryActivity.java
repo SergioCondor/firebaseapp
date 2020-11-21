@@ -1,4 +1,4 @@
-package com.residencias.ficosec;
+package com.residencias.ficosec.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import com.residencias.ficosec.Buyers.HomeActivity;
+import com.residencias.ficosec.Buyers.MainActivity;
+import com.residencias.ficosec.R;
 
 public class AdminCategoryActivity extends AppCompatActivity {
     private ImageView tShirts, sportsTshirts, femaleDresses, sweathers;

@@ -1,4 +1,4 @@
-package com.residencias.ficosec;
+package com.residencias.ficosec.Admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.residencias.ficosec.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -25,7 +26,7 @@ import java.util.HashMap;
 public class AdminMaintainProductsActivity extends AppCompatActivity {
 
     private EditText name, price, description;
-    private Button applyChangesBtn;
+    private Button applyChangesBtn, deleteBtn;
     private ImageView imageView;
 
     private String productID = "";
@@ -44,6 +45,7 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
         name = findViewById(R.id.product_name_maintain);
         description = findViewById(R.id.product_description_maintain);
         imageView = findViewById(R.id.product_image_maintain);
+        deleteBtn = findViewById(R.id.delete_product_btn);
 
         displaySpecificProductInfo();
 
@@ -51,6 +53,24 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 applyChanges();
+            }
+        });
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteThisProduct();
+            }
+        });
+    }
+
+    private void deleteThisProduct() {
+        productsRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Intent intent = new Intent(AdminMaintainProductsActivity.this, AdminCategoryActivity.class);
+                startActivity(intent);
+                Toast.makeText(AdminMaintainProductsActivity.this, "El producto ha sido borrado correctamente", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
     }
@@ -61,11 +81,11 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
         String putoDescription = description.getText().toString();
 
         if (putoName.equals("")){
-            Toast.makeText(this, "Porfavor escriba el nombre del producto", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Por favor escriba el nombre del producto", Toast.LENGTH_SHORT).show();
         }else if (putoPrice.equals("")){
-            Toast.makeText(this, "Porfavor escriba el precio del producto", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Por favor escriba el precio del producto", Toast.LENGTH_SHORT).show();
         }else if (putoDescription.equals("")){
-            Toast.makeText(this, "Porfavor escriba la descripción del producto", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Por favor escriba la descripción del producto", Toast.LENGTH_SHORT).show();
         }else{
             HashMap<String, Object> productMap = new HashMap<>();
             productMap.put("pid", productID);

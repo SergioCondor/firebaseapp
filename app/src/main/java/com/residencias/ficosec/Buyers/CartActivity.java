@@ -1,4 +1,4 @@
-package com.residencias.ficosec;
+package com.residencias.ficosec.Buyers;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -27,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.residencias.ficosec.Model.Cart;
 import com.residencias.ficosec.Prevalent.Prevalent;
+import com.residencias.ficosec.R;
 import com.residencias.ficosec.ViewHolder.CartViewHolder;
 
 public class CartActivity extends AppCompatActivity {

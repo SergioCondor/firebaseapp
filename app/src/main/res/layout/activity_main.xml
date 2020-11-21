@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-    tools:context=".MainActivity">
+    tools:context=".Buyers.MainActivity">
 
     <ImageView
         android:id="@+id/app_logo"
@@ -37,6 +37,21 @@
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
         />
+
+    <Button
+        android:id="@+id/main_join_now_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/main_login_btn"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/input_design"
+        android:padding="20dp"
+        android:text="@string/registrarse"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"/>
     <Button
         android:id="@+id/main_login_btn"
         android:layout_width="match_parent"
@@ -54,20 +69,18 @@
         android:textSize="18sp"/>
 
 
-    <Button
-        android:id="@+id/main_join_now_btn"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/seller_begin"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/main_login_btn"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/input_design"
-        android:padding="20dp"
-        android:text="@string/registrarse"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"/>
+        android:layout_below="@+id/app_logo1"
+        android:layout_marginStart="80dp"
+        android:text="Registrarse como vendedor"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
 
 
 

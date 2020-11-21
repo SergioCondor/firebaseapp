@@ -1,4 +1,4 @@
-package com.residencias.ficosec;
+package com.residencias.ficosec.Buyers;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,8 +28,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.residencias.ficosec.Admin.AdminMaintainProductsActivity;
 import com.residencias.ficosec.Model.Products;
 import com.residencias.ficosec.Prevalent.Prevalent;
+import com.residencias.ficosec.R;
 import com.residencias.ficosec.ViewHolder.ProductViewHolder;
 import com.squareup.picasso.Picasso;
 
@@ -74,8 +76,11 @@ public class HomeActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Intent intent = new Intent(HomeActivity.this, CartActivity.class);
-               startActivity(intent);
+                if (!type.equals("Admin")){
+                    Intent intent = new Intent(HomeActivity.this, CartActivity.class);
+                    startActivity(intent);
+                }
+
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -104,28 +109,40 @@ public class HomeActivity extends AppCompatActivity
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case nav_cart:
-                        Intent intentos = new Intent(HomeActivity.this, CartActivity.class);
-                        startActivity(intentos);
+                        if (!type.equals("Admin")){
+                            Intent intentos = new Intent(HomeActivity.this, CartActivity.class);
+                            startActivity(intentos);
+                        }
+
                         break;
                     case R.id.nav_search:
-                        Intent intentarse = new Intent(HomeActivity.this, SearchProductsActivity.class);
-                        startActivity(intentarse);
+                        if (!type.equals("Admin")){
+                            Intent intentarse = new Intent(HomeActivity.this, SearchProductsActivity.class);
+                            startActivity(intentarse);
+                        }
+
                         break;
                     case R.id.nav_categories:
 
+
                         break;
                     case R.id.nav_settings:
-                        Intent intentar = new Intent(HomeActivity.this, SettingsActivity.class);
-                        startActivity(intentar);
+                        if (!type.equals("Admin")){
+                            Intent intentar = new Intent(HomeActivity.this, SettingsActivity.class);
+                            startActivity(intentar);
+                        }
 
                         break;
                     case nav_logout:
+                        if (!type.equals("Admin")){
+                            Paper.book().destroy();
+                            Intent intento = new Intent(HomeActivity.this, MainActivity.class);
+                            intento.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intento);
+                            finish();
+                        }
                         //Toast.makeText(this, "login out", Toast.LENGTH_SHORT).show();
-                        Paper.book().destroy();
-                        Intent intento = new Intent(HomeActivity.this, MainActivity.class);
-                        intento.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intento);
-                        finish();
+
                         break;
                     default:
                         break;

@@ -1,4 +1,4 @@
-package com.residencias.ficosec;
+package com.residencias.ficosec.Admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +15,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.residencias.ficosec.Model.Cart;
+import com.residencias.ficosec.R;
 import com.residencias.ficosec.ViewHolder.CartViewHolder;
 
 public class AdminUserProductsActivity extends AppCompatActivity {

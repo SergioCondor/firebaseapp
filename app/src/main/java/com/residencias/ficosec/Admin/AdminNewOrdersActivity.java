@@ -1,4 +1,4 @@
-package com.residencias.ficosec;
+package com.residencias.ficosec.Admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -20,8 +20,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.residencias.ficosec.Model.AdminOrders;
-
-import org.w3c.dom.Text;
+import com.residencias.ficosec.R;
 
 public class AdminNewOrdersActivity extends AppCompatActivity {
 
