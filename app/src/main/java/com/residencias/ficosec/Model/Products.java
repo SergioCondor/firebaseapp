@@ -1,9 +1,15 @@
 package com.residencias.ficosec.Model;
 
 public class Products {
-private String pname, description, price, image, category, pid, date, time;
+private String pname, description, price, image, category, pid, date, time, productState;
 
-    public Products(String pname, String description, String price, String image, String category, String pid, String date, String time) {
+
+
+    public Products(){
+
+}
+
+    public Products(String pname, String description, String price, String image, String category, String pid, String date, String time, String prductState) {
         this.pname = pname;
         this.description = description;
         this.price = price;
@@ -12,11 +18,8 @@ private String pname, description, price, image, category, pid, date, time;
         this.pid = pid;
         this.date = date;
         this.time = time;
+        this.productState = productState;
     }
-
-    public Products(){
-
-}
 
     public String getPname() {
         return pname;
@@ -80,5 +83,13 @@ private String pname, description, price, image, category, pid, date, time;
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getProductState() {
+        return productState;
+    }
+
+    public void setProductState(String productState) {
+        this.productState = productState;
     }
 }
