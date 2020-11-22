@@ -27,18 +27,18 @@ public class AdminHomeActivity extends AppCompatActivity {
         maintainProductsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminHomeActivity.this, HomeActivity.class);
-                intent.putExtra("Admin","Admin");
-                startActivity(intent);
+                Intent intentar = new Intent(AdminHomeActivity.this, HomeActivity.class);
+                intentar.putExtra("Admin","Admin");
+                startActivity(intentar);
             }
         });
 
         LogoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminHomeActivity.this, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
+                Intent intentoso = new Intent(AdminHomeActivity.this, MainActivity.class);
+                intentoso.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intentoso);
                 finish();
             }
         });
@@ -53,8 +53,8 @@ public class AdminHomeActivity extends AppCompatActivity {
         checkApproveProductsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminHomeActivity.this, AdminNewOrdersActivity.class);
-                startActivity(intent);
+                Intent intento = new Intent(AdminHomeActivity.this, AdminCheckNewProductsActivity.class);
+                startActivity(intento);
 
             }
         });
