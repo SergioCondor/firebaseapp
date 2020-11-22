@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Admin.AdminCategoryActivity">
+    tools:context=".Sellers.SellerProductCategoryActivity">
 
     <TextView
         android:id="@+id/slogan_category"
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/slogan_category"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="100dp"
         android:gravity="center"
         android:orientation="horizontal"
         >
@@ -111,7 +111,7 @@
             android:layout_marginStart="16dp"
             android:src="@drawable/mobiles"/>
     </LinearLayout>
-    <Button
+    <!--<Button
         android:id="@+id/maintain_btn"
         android:layout_width="match_parent"
         android:layout_height="42dp"
@@ -151,7 +151,7 @@
         android:text="Ver nuevos pedidos"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
-        />
+        />-->
 
 
 </RelativeLayout>

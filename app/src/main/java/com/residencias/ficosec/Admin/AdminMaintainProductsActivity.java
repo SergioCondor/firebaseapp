@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.residencias.ficosec.R;
+import com.residencias.ficosec.Sellers.SellerProductCategoryActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -67,7 +68,7 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
         productsRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                Intent intent = new Intent(AdminMaintainProductsActivity.this, AdminCategoryActivity.class);
+                Intent intent = new Intent(AdminMaintainProductsActivity.this, SellerProductCategoryActivity.class);
                 startActivity(intent);
                 Toast.makeText(AdminMaintainProductsActivity.this, "El producto ha sido borrado correctamente", Toast.LENGTH_SHORT).show();
                 finish();
@@ -98,7 +99,7 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()){
                         Toast.makeText(AdminMaintainProductsActivity.this, "Cambios aplicados correctamente", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(AdminMaintainProductsActivity.this, AdminCategoryActivity.class);
+                        Intent intent = new Intent(AdminMaintainProductsActivity.this, SellerProductCategoryActivity.class);
                         startActivity(intent);
                         finish();
                     }

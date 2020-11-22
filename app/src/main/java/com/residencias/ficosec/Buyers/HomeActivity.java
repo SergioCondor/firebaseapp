@@ -91,7 +91,8 @@ public class HomeActivity extends AppCompatActivity
         ImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
         if (!type.equals("Admin")){
             userNameTextView.setText(Prevalent.currentOnlineUser.getName());
-            Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+            Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile)
+                    .into(profileImageView);
         }
       // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -159,7 +160,9 @@ public class HomeActivity extends AppCompatActivity
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>().setQuery(ProductsRef, Products.class).build();
+        FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>()
+                .setQuery(ProductsRef.orderByChild("productState").equalTo("Approved"), Products.class)
+                .build();
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int i, @NonNull final Products model) {

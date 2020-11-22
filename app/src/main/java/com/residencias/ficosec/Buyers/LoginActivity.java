@@ -18,7 +18,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.residencias.ficosec.Admin.AdminCategoryActivity;
+import com.residencias.ficosec.Admin.AdminHomeActivity;
+import com.residencias.ficosec.Sellers.SellerProductCategoryActivity;
 import com.residencias.ficosec.Model.Users;
 import com.residencias.ficosec.Prevalent.Prevalent;
 import com.residencias.ficosec.R;
@@ -123,7 +124,7 @@ public class LoginActivity extends AppCompatActivity {
                             if (parentDbName.equals("Admins")){
                                 Toast.makeText(LoginActivity.this, "Sesion iniciada correctamente", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
-                                Intent intent = new Intent(LoginActivity.this, AdminCategoryActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
                                 startActivity(intent);
                             }else if(parentDbName.equals("Users")){
                                 Toast.makeText(LoginActivity.this, "Sesion iniciada correctamente", Toast.LENGTH_SHORT).show();

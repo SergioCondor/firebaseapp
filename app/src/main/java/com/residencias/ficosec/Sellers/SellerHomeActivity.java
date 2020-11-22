@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -15,7 +14,6 @@ import com.residencias.ficosec.R;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -50,8 +48,12 @@ public class SellerHomeActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
+
                         return true;
                     case R.id.navigation_add:
+                        Intent intentcate = new Intent(SellerHomeActivity.this, SellerProductCategoryActivity.class);
+                        startActivity(intentcate);
+                        finish();
                         return true;
                     case R.id.navigation_logout:
                         final FirebaseAuth mAuth;
