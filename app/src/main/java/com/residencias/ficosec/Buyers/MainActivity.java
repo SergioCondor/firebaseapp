@@ -28,9 +28,8 @@ import com.residencias.ficosec.Sellers.SellerRegistrationActivity;
 import io.paperdb.Paper;
 
 public class MainActivity extends AppCompatActivity {
-    private Button joinNowButton, loginButton;
+    private Button joinNowButton, loginButton, sellerBegin;
     private ProgressDialog loadingBar;
-    private TextView sellerBegin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

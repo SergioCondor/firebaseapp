@@ -123,10 +123,39 @@ public class HomeActivity extends AppCompatActivity
                         }
 
                         break;
-                    case R.id.nav_categories:
-
-
+                    case R.id.nav_cat_artesania:
+                        if (!type.equals("Admin")){
+                            Intent cateartesania = new Intent(HomeActivity.this, SearchCategoryActivity.class);
+                            cateartesania.putExtra("category", "artesanias");
+                            startActivity(cateartesania);
+                        }
                         break;
+                    case R.id.nav_cat_pasteleria:
+                        Intent catpasteleria= new Intent(HomeActivity.this, SearchCategoryActivity.class);
+                        catpasteleria.putExtra("category", "pasteleria");
+                        startActivity(catpasteleria);
+                        break;
+                    case R.id.nav_cat_reposteria:
+                        Intent catreposteria = new Intent(HomeActivity.this, SearchCategoryActivity.class);
+                        catreposteria.putExtra("category", "reposteria");
+                        startActivity(catreposteria);
+                        break;
+                    case R.id.nav_cat_fertilizante:
+                        Intent catfertilizante = new Intent(HomeActivity.this, SearchCategoryActivity.class);
+                        catfertilizante.putExtra("category", "fertilizante");
+                        startActivity(catfertilizante);
+                        break;
+                    case R.id.nav_cat_cocina:
+                        Intent catcocina = new Intent(HomeActivity.this, SearchCategoryActivity.class);
+                        catcocina.putExtra("category", "cocina");
+                        startActivity(catcocina);
+                        break;
+                    case R.id.nav_cat_ropa:
+                        Intent catropa = new Intent(HomeActivity.this, SearchCategoryActivity.class);
+                        catropa.putExtra("category", "ropa");
+                        startActivity(catropa);
+                        break;
+
                     case R.id.nav_settings:
                         if (!type.equals("Admin")){
                             Intent intentar = new Intent(HomeActivity.this, SettingsActivity.class);
@@ -225,9 +254,7 @@ public class HomeActivity extends AppCompatActivity
             case R.id.nav_search :
                // Toast.makeText(this, "login out", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.nav_categories:
-               // Toast.makeText(this, "login out", Toast.LENGTH_SHORT).show();
-                break;
+
             case R.id.nav_settings:
                // Toast.makeText(this, "login out", Toast.LENGTH_SHORT).show();
                 break;

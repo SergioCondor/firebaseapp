@@ -14,11 +14,11 @@
             android:icon="?android:attr/actionModeWebSearchDrawable"
             android:iconTint="@android:color/white"
             android:title="Buscar"/>
-        <item
+        <!--<item
             android:id="@+id/nav_categories"
             android:icon="@drawable/category"
             android:iconTint="@android:color/white"
-            android:title="Categorias"/>
+            android:title="Categorias"/>-->
         <item
             android:id="@+id/nav_settings"
             android:icon="@android:drawable/ic_menu_manage"
@@ -30,4 +30,32 @@
             android:iconTint="@android:color/white"
             android:title="Cerrar sesión"/>
     </group>
+    <item android:title="Categorias">
+        <menu>
+            <item android:id="@+id/nav_cat_artesania"
+                android:icon="@drawable/dreamcatcher"
+                android:iconTint="@android:color/white"
+                android:title="Artesanias" />
+            <item android:id="@+id/nav_cat_pasteleria"
+                android:icon="@drawable/weddingcake"
+                android:iconTint="@android:color/white"
+                android:title="Pasteleria" />
+            <item android:id="@+id/nav_cat_reposteria"
+                android:icon="@drawable/cupcake"
+                android:iconTint="@android:color/white"
+                android:title="Reposteria" />
+            <item android:id="@+id/nav_cat_fertilizante"
+                android:icon="@drawable/fertilizer"
+                android:iconTint="@android:color/white"
+                android:title="Fertilizantes" />
+            <item android:id="@+id/nav_cat_cocina"
+                android:icon="@drawable/restaurante"
+                android:iconTint="@android:color/white"
+                android:title="Cocina" />
+            <item android:id="@+id/nav_cat_ropa"
+                android:icon="@drawable/tshirts"
+                android:iconTint="@android:color/white"
+                android:title="Ropa" />
+        </menu>
+    </item>
 </menu>

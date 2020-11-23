@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".Admin.AdminCheckNewProductsActivity"></activity>
+        <activity android:name=".Buyers.SearchCategoryActivity"></activity>
+        <activity android:name=".Admin.AdminCheckNewProductsActivity" />
         <activity android:name=".Admin.AdminHomeActivity" />
         <activity
             android:name=".Sellers.SellerHomeActivity"
