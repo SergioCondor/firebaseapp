@@ -53,6 +53,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         getProductDetails(productID);
 
+
         addToCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,7 +118,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
     }
 
-    private void getProductDetails(String productID) {
+    private void getProductDetails(final String productID) {
         DatabaseReference productRef = FirebaseDatabase.getInstance().getReference().child("Products");
         productRef.child(productID).addValueEventListener(new ValueEventListener() {
             @Override
@@ -128,6 +129,14 @@ public class ProductDetailsActivity extends AppCompatActivity {
                     productDescription.setText(products.getDescription());
                     productPrice.setText(products.getPrice());
                     Picasso.get().load(products.getImage()).into(productImage);
+                    productImage.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(ProductDetailsActivity.this, ImageDetailsActivity.class);
+                            intent.putExtra("pid",productID);
+                            startActivity(intent);
+                        }
+                    });
 
                 }
             }

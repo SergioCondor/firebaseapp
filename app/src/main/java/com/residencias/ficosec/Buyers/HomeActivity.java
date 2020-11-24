@@ -126,35 +126,51 @@ public class HomeActivity extends AppCompatActivity
                     case R.id.nav_cat_artesania:
                         if (!type.equals("Admin")){
                             Intent cateartesania = new Intent(HomeActivity.this, SearchCategoryActivity.class);
-                            cateartesania.putExtra("category", "artesanias");
+                            cateartesania.putExtra("category", "Artesanías");
                             startActivity(cateartesania);
                         }
                         break;
                     case R.id.nav_cat_pasteleria:
                         Intent catpasteleria= new Intent(HomeActivity.this, SearchCategoryActivity.class);
-                        catpasteleria.putExtra("category", "pasteleria");
+                        catpasteleria.putExtra("category", "Pastelería");
                         startActivity(catpasteleria);
                         break;
                     case R.id.nav_cat_reposteria:
                         Intent catreposteria = new Intent(HomeActivity.this, SearchCategoryActivity.class);
-                        catreposteria.putExtra("category", "reposteria");
+                        catreposteria.putExtra("category", "Repostería");
                         startActivity(catreposteria);
                         break;
                     case R.id.nav_cat_fertilizante:
                         Intent catfertilizante = new Intent(HomeActivity.this, SearchCategoryActivity.class);
-                        catfertilizante.putExtra("category", "fertilizante");
+                        catfertilizante.putExtra("category", "Fertilizante");
                         startActivity(catfertilizante);
                         break;
                     case R.id.nav_cat_cocina:
                         Intent catcocina = new Intent(HomeActivity.this, SearchCategoryActivity.class);
-                        catcocina.putExtra("category", "cocina");
+                        catcocina.putExtra("category", "Cocina");
                         startActivity(catcocina);
                         break;
                     case R.id.nav_cat_ropa:
                         Intent catropa = new Intent(HomeActivity.this, SearchCategoryActivity.class);
-                        catropa.putExtra("category", "ropa");
+                        catropa.putExtra("category", "Ropa");
                         startActivity(catropa);
                         break;
+                        case R.id.nav_cat_belleza:
+                        Intent catbelleza = new Intent(HomeActivity.this, SearchCategoryActivity.class);
+                        catbelleza.putExtra("category", "Salud y belleza");
+                        startActivity(catbelleza);
+                        break;
+                    case R.id.nav_cat_hogar:
+                        Intent cathogar = new Intent(HomeActivity.this, SearchCategoryActivity.class);
+                        cathogar.putExtra("category", "Artículos para el hogar");
+                        startActivity(cathogar);
+                        break;
+                    case R.id.nav_cat_electronica:
+                        Intent catelectro = new Intent(HomeActivity.this, SearchCategoryActivity.class);
+                        catelectro.putExtra("category", "Electrónicos");
+                        startActivity(catelectro);
+                        break;
+
 
                     case R.id.nav_settings:
                         if (!type.equals("Admin")){

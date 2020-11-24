@@ -6,12 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".Buyers.ProductDetailsActivity">
 
+  <!--  <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="260dp">-->
+
     <ImageView
         android:id="@+id/product_image_details"
         android:layout_width="match_parent"
         android:layout_height="260dp"
         android:scaleType="centerCrop"
         />
+
+<!--    </ScrollView>-->
+
     <TextView
         android:id="@+id/product_name_details"
         android:layout_width="match_parent"
@@ -23,22 +30,25 @@
         android:textColor="@android:color/black"
         android:textSize="15sp"
         android:textStyle="bold"/>
+
     <TextView
         android:id="@+id/product_description_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/product_name_details"
-        android:layout_marginTop="10dp"
+        android:layout_below="@+id/product_price_details"
+        android:layout_marginTop="13dp"
         android:gravity="center"
         android:text="Descripción del producto"
+        android:autoLink="all"
         android:textColor="@android:color/black"
         android:textSize="15sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/product_price_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/product_description_details"
+        android:layout_below="@+id/product_name_details"
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="Precio del producto"
@@ -50,7 +60,7 @@
         android:id="@+id/number_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/product_price_details"
+        android:layout_below="@id/product_description_details"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:elevation="6dp"
@@ -61,7 +71,7 @@
         app:textSize="16sp">
 
     </com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>
-    
+
     <!--<com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_product_to_cart_btn"
         android:layout_width="wrap_content"
@@ -82,8 +92,9 @@
         android:background="@color/colorPrimaryDark"
         android:text="Agregar al carrito"
         android:textColor="@android:color/white"
-        android:textSize="18dp"
-        />
+        android:textSize="18sp"
+        tools:ignore="HardcodedText" />
+
 
 
 </RelativeLayout>

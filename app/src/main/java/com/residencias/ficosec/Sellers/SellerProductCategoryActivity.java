@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import com.residencias.ficosec.R;
 
 public class SellerProductCategoryActivity extends AppCompatActivity {
-    private ImageView tShirts, artesanias,cocina,pasteleria,reposteria,fertilizantes;
+    private ImageView tShirts, artesanias,cocina,pasteleria,reposteria,fertilizantes,saludbelleza,electronicos,hogar;
 
    // private Button LogoutBtn, CheckOrdersBtn, maintainProductsBtn;
     @Override
@@ -24,13 +24,16 @@ public class SellerProductCategoryActivity extends AppCompatActivity {
         pasteleria = (ImageView) findViewById(R.id.pasteleria);
         reposteria = (ImageView) findViewById(R.id.reposteria);
         fertilizantes = (ImageView) findViewById(R.id.fertilizantes);
+        hogar = (ImageView) findViewById(R.id.articulos_hogar);
+        saludbelleza = (ImageView) findViewById(R.id.salud_belleza);
+        electronicos = (ImageView) findViewById(R.id.electronica);
 
 
         tShirts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SellerProductCategoryActivity.this, SellerAddNewProductActivity.class);
-                intent.putExtra("category", "ropa");
+                intent.putExtra("category", "Ropa");
                 startActivity(intent);
             }
         });
@@ -38,7 +41,7 @@ public class SellerProductCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SellerProductCategoryActivity.this, SellerAddNewProductActivity.class);
-                intent.putExtra("category", "artesanias");
+                intent.putExtra("category", "Artesanías");
                 startActivity(intent);
             }
         });
@@ -46,7 +49,7 @@ public class SellerProductCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SellerProductCategoryActivity.this, SellerAddNewProductActivity.class);
-                intent.putExtra("category", "cocina");
+                intent.putExtra("category", "Cocina");
                 startActivity(intent);
             }
         });
@@ -54,7 +57,7 @@ public class SellerProductCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SellerProductCategoryActivity.this, SellerAddNewProductActivity.class);
-                intent.putExtra("category", "pasteleria");
+                intent.putExtra("category", "Pastelería");
                 startActivity(intent);
             }
         });
@@ -62,7 +65,7 @@ public class SellerProductCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SellerProductCategoryActivity.this, SellerAddNewProductActivity.class);
-                intent.putExtra("category", "reposteria");
+                intent.putExtra("category", "Repostería");
                 startActivity(intent);
             }
         });
@@ -70,7 +73,31 @@ public class SellerProductCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SellerProductCategoryActivity.this, SellerAddNewProductActivity.class);
-                intent.putExtra("category", "fertilizantes");
+                intent.putExtra("category", "Fertilizantes");
+                startActivity(intent);
+            }
+        });
+        hogar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SellerProductCategoryActivity.this, SellerAddNewProductActivity.class);
+                intent.putExtra("category", "Artículos para el hogar");
+                startActivity(intent);
+            }
+        });
+        saludbelleza.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SellerProductCategoryActivity.this, SellerAddNewProductActivity.class);
+                intent.putExtra("category", "Salud y belleza");
+                startActivity(intent);
+            }
+        });
+        electronicos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SellerProductCategoryActivity.this, SellerAddNewProductActivity.class);
+                intent.putExtra("category", "Electrónicos");
                 startActivity(intent);
             }
         });
