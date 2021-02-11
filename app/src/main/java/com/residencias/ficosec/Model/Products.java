@@ -1,7 +1,7 @@
 package com.residencias.ficosec.Model;
 
 public class Products {
-private String pname, description, price, image, category, pid, date, time, productState;
+private String pname, description, price, image, category, pid, date, time, productState,sellerPhone;
 
 
 
@@ -9,7 +9,7 @@ private String pname, description, price, image, category, pid, date, time, prod
 
 }
 
-    public Products(String pname, String description, String price, String image, String category, String pid, String date, String time, String prductState) {
+    public Products(String pname, String description, String price, String image, String category, String pid, String date, String time, String prductState, String sellerPhone) {
         this.pname = pname;
         this.description = description;
         this.price = price;
@@ -19,6 +19,7 @@ private String pname, description, price, image, category, pid, date, time, prod
         this.date = date;
         this.time = time;
         this.productState = productState;
+        this.sellerPhone = sellerPhone;
     }
 
     public String getPname() {
@@ -91,5 +92,13 @@ private String pname, description, price, image, category, pid, date, time, prod
 
     public void setProductState(String productState) {
         this.productState = productState;
+    }
+
+    public String getSellerPhone() {
+        return sellerPhone;
+    }
+
+    public void setSellerPhone(String sellerPhone) {
+        this.sellerPhone = sellerPhone;
     }
 }

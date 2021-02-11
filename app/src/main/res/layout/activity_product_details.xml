@@ -55,12 +55,24 @@
         android:textColor="@android:color/black"
         android:textSize="15sp"
         android:textStyle="bold"/>
+  <TextView
+      android:id="@+id/product_phone_details"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/product_description_details"
+      android:layout_marginTop="10dp"
+      android:autoLink="phone"
+      android:gravity="center"
+      android:text="Numero de telefono del vendedor"
+      android:textColor="@android:color/black"
+      android:textSize="15sp"
+      android:textStyle="bold"/>
 
     <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
         android:id="@+id/number_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/product_description_details"
+        android:layout_above="@id/pd_add_to_cart_button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:elevation="6dp"

@@ -33,7 +33,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private Button addToCartButton;
     private ImageView productImage;
     private ElegantNumberButton numberButton;
-    private TextView productPrice, productDescription, productName;
+    private TextView productPrice, productDescription, productName, productPhone;
     private String productID = "", state = "Normal";
 
     @Override
@@ -50,6 +50,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         productName = findViewById(R.id.product_name_details);
         productDescription = findViewById(R.id.product_description_details);
         productPrice = findViewById(R.id.product_price_details);
+        productPhone = findViewById(R.id.product_phone_details);
 
         getProductDetails(productID);
 
@@ -127,7 +128,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
                     Products products = snapshot.getValue(Products.class);
                     productName.setText(products.getPname());
                     productDescription.setText(products.getDescription());
-                    productPrice.setText(products.getPrice());
+                    productPrice.setText("Precio: "+products.getPrice()+"$");
+                    productPhone.setText("Contacto por whatsapp: "+products.getSellerPhone());
                     Picasso.get().load(products.getImage()).into(productImage);
                     productImage.setOnClickListener(new View.OnClickListener() {
                         @Override

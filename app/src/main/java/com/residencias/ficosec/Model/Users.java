@@ -2,7 +2,7 @@ package com.residencias.ficosec.Model;
 
 public class Users {
     private String name, phone, password, image, address;
-   
+   private String id, username, status, search;
 
     public Users(){
 
@@ -15,6 +15,17 @@ public class Users {
         this.password = password;
         this.image = image;
         this.address = address;
+        this.id = id;
+        this.status = status;
+        this.search = search;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -55,5 +66,21 @@ public class Users {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getSearch() {
+        return search;
+    }
+
+    public void setSearch(String search) {
+        this.search = search;
     }
 }
